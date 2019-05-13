@@ -1,7 +1,6 @@
 {
   "variables": {
       "instance_size":"t2.micro",
-      "ami_name":"",
       "base_ami":"ami-08116ad8596a0c5f1",
       "ssh_username":"ec2-user",
       "filename": ""
@@ -14,7 +13,7 @@
       "ssh_username": "{{user `ssh_username`}}",
       "region": "ap-south-1",
       "ssh_timeout" : "20m",
-      "ami_name":"{{user `ami_name`}}",
+      "ami_name":"ami-{{timestamp}}",
       "ssh_pty" : "true",
       "tags": {
         "Name": "Packer Example {{timestamp}}",
