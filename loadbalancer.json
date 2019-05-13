@@ -32,5 +32,10 @@
         "sudo cp index.html /var/www/html/"
       ]
     }
-  ]
+  ],
+  "post-processors": [{
+        "type": "manifest",
+        "output": "manifest.json",
+        "strip_path": true
+    }]
 }
