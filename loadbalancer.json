@@ -4,8 +4,6 @@
       "ami_name":"",
       "base_ami":"ami-08116ad8596a0c5f1",
       "ssh_username":"ec2-user",
-      "vpc_id":"",
-      "subnet_id":"",
       "filename": ""
   },
   "builders": [
@@ -14,11 +12,12 @@
       "source_ami": "{{user `base_ami`}}",
       "instance_type": "{{user `instance_size`}}",
       "ssh_username": "{{user `ssh_username`}}",
+      "region": "ap-south-1",
       "ssh_timeout" : "20m",
       "ami_name":"{{user `ami_name`}}",
       "ssh_pty" : "true",
       "tags": {
-        "Name": "App Name",
+        "Name": "Packer Example {{timestamp}}",
         "BuiltBy": "Packer"
       }
     }
