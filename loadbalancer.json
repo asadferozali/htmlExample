@@ -26,8 +26,8 @@
     {
       "type": "shell",
       "inline": [
-        "yum install httpd -y",
-        "service httpd start",
+        "sudo yum install httpd -y",
+        "sudo service httpd start",
         "aws s3 cp s3://loadbalncedemo/{{user `filename`}}.zip {{user `filename`}}.zip",
         "unzip {{user `filename`}}.zip",
         "rm {{user `filename`}}.zip",
