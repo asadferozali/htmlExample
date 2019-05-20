@@ -6,7 +6,6 @@
 			"instance_type": "{{user `instance_size`}}",
 			"ssh_username": "{{user `ssh_username`}}",
 			"ssh_timeout": "20m",
-			"ami_name": "{{user `ami_name`}}",
 			"ssh_pty": "true",
 			"tags": {
 				"Name": "App Name",
