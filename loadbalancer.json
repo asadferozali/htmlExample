@@ -1,43 +1,24 @@
 {
-  "variables": {
-      "instance_size":"t2.micro",
-      "base_ami":"ami-08116ad8596a0c5f1",
-      "ssh_username":"ec2-user",
-      "filename": ""
-  },
-  "builders": [
-    {
-      "type": "amazon-ebs",
-      "source_ami": "{{user `base_ami`}}",
-      "instance_type": "{{user `instance_size`}}",
-      "ssh_username": "{{user `ssh_username`}}",
-      "region": "ap-south-1",
-      "ssh_timeout" : "20m",
-      "ami_name":"ami-{{timestamp}}",
-      "ssh_pty" : "true",
-      "tags": {
-        "Name": "Packer Example {{timestamp}}",
-        "BuiltBy": "Packer"
-      }
+	"builders": [
+		{
+			"type": "amazon-ebs",
+			"source_ami": "{{user `base_ami`}}",
+			"instance_type": "{{user `instance_size`}}",
+			"ssh_username": "{{user `ssh_username`}}",
+			"ssh_timeout": "20m",
+			"ami_name": "{{user `ami_name`}}",
+			"ssh_pty": "true",
+			"tags": {
+				"Name": "App Name",
+				"BuiltBy": "Packer"
+			}
     }
   ],
-  "description": "AWS Image",
-  "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-        "sudo yum install httpd -y",
-        "sudo service httpd start",
-        "aws s3 cp s3://loadbalncedemo/{{user `filename`}}.zip {{user `filename`}}.zip",
-        "unzip {{user `filename`}}.zip",
-        "rm {{user `filename`}}.zip",
-        "sudo cp index.html /var/www/html/"
-      ]
+	"description": "AWS Image",
+	"provisioners": [
+		{
+			"type": "shell",
+			"script": "packer-script.sh"
     }
-  ],
-  "post-processors": [{
-        "type": "manifest",
-        "output": "manifest.json",
-        "strip_path": true
-    }]
+  ]
 }

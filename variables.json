@@ -1,0 +1,9 @@
+{
+	"instance_size": "t2.micro",
+	"ami_name": "",
+	"base_ami": "ami-08116ad8596a0c5f1",
+	"ssh_username": "ec2-user",
+	"vpc_id": "",
+	"subnet_id": "",
+	"filename": ""
+}
